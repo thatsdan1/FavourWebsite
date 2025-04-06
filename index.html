@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favour Gam - Author</title>
+    <style>
+        /* --- Global Styles & Resets --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Base font - customize if needed */
+            background-color: #f0f0f0; /* Light gray background like example */
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit; /* Inherit text color from parent */
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: #ffffff; /* White background for header */
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+             position: sticky; /* Make header sticky */
+             top: 0; /* Stick to the top */
+             z-index: 1000; /* Ensure it's above other content */
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .author-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #222; /* Darker color for name */
+            /* Customize font if desired: font-family: 'Your Special Font', serif; */
+        }
+
+        .main-nav ul {
+            display: flex;
+        }
+
+        .main-nav li {
+            margin-left: 25px;
+        }
+
+        .main-nav a {
+            color: #555; /* Navigation link color */
+            font-weight: 500;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active { /* Style for active page link */
+            color: #000;
+            /* Example accent color for hover/active */
+            /* border-bottom-color: #8a4baf; */ /* Use your accent color */
+        }
+
+         /* Basic Mobile Menu Toggle - Requires JS for functionality */
+         .menu-toggle {
+            display: none; /* Hidden by default */
+            font-size: 1.5em;
+            cursor: pointer;
+         }
+
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 60px 0 40px; /* Adjust padding as needed */
+            text-align: center;
+            background-color: #f0f0f0; /* Match body background or make different */
+        }
+
+        .book-title-main {
+            font-size: 3.5em; /* Large title font size */
+            font-weight: bold;
+            color: #111; /* Very dark title color */
+            letter-spacing: 1px;
+             margin-bottom: 5px;
+            /* Customize font: font-family: 'Your Title Font', sans-serif; */
+        }
+
+        .author-title-main {
+             font-size: 1.8em;
+             font-weight: normal;
+             color: #444;
+             margin-bottom: 40px;
+         }
+
+
+        /* --- Content Area (Author Image, Book, Links) --- */
+        .content-area {
+            display: flex;
+            align-items: center; /* Vertically align items */
+            justify-content: center; /* Center items horizontally */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 40px; /* Space between elements */
+            padding: 0 20px 60px; /* Padding below content */
+        }
+
+        .author-image-container {
+            flex-basis: 45%; /* Adjust width as needed */
+            max-width: 450px; /* Max width for the image */
+            /* Add perspective/transform effects if desired */
+        }
+
+        .author-image-container img {
+             /* Optional: add subtle shadow or effects */
+            /* box-shadow: 0 10px 25px rgba(0,0,0,0.1); */
+        }
+
+        .book-details {
+            flex-basis: 45%; /* Adjust width as needed */
+            max-width: 450px; /* Max width for book details */
+            display: flex;
+            flex-direction: column; /* Stack book cover and links */
+            align-items: center; /* Center items in this column */
+        }
+
+        .book-cover img {
+            max-width: 300px; /* Control book cover size */
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Subtle shadow */
+        }
+
+        .purchase-links h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .purchase-links ul {
+            width: 100%;
+             max-width: 350px; /* Limit width of links container */
+        }
+
+        .purchase-links li {
+            margin-bottom: 10px;
+        }
+
+        .purchase-links a {
+            display: block;
+            background-color: #e9e9e9; /* Button background */
+            color: #333; /* Button text color */
+            padding: 12px 20px;
+            text-align: center;
+            border-radius: 4px; /* Slightly rounded corners */
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            border: 1px solid #ccc; /* Subtle border */
+        }
+
+        .purchase-links a:hover {
+            background-color: #d8d8d8; /* Darker background on hover */
+            color: #000;
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* --- Footer --- */
+         .main-footer {
+             background-color: #333; /* Dark footer */
+             color: #ccc;
+             text-align: center;
+             padding: 20px 0;
+             margin-top: 40px;
+             font-size: 0.9em;
+         }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .book-title-main {
+                font-size: 2.8em;
+            }
+             .author-title-main {
+                 font-size: 1.5em;
+             }
+        }
+
+
+        @media (max-width: 768px) {
+             .main-header .container {
+                flex-direction: column; /* Stack logo/name and nav */
+                align-items: flex-start;
+             }
+             .main-nav {
+                 margin-top: 10px;
+                 width: 100%; /* Full width for nav */
+             }
+             .main-nav ul {
+                 flex-direction: column; /* Stack nav items */
+                 width: 100%;
+             }
+             .main-nav li {
+                 margin: 5px 0;
+                 text-align: center; /* Center nav items */
+                 width: 100%;
+             }
+             .main-nav a {
+                 display: block; /* Make links full width */
+                 padding: 10px;
+                 background-color: #f8f8f8; /* Add background for clarity */
+                 border-radius: 4px;
+             }
+             .main-nav a:hover {
+                 background-color: #eee;
+                 border-bottom-color: transparent; /* Remove border on mobile stacked links */
+             }
+
+            .menu-toggle {
+                 /* Basic styling if you were to implement JS toggle */
+                 /* display: block;
+                 position: absolute;
+                 top: 15px;
+                 right: 20px; */
+             }
+            /* .main-nav { display: none; } */ /* Hide nav initially if using JS toggle */
+            /* .main-nav.active { display: block; } */ /* Show nav when active */
+
+
+            .book-title-main {
+                font-size: 2.2em;
+            }
+             .author-title-main {
+                 font-size: 1.2em;
+             }
+
+            .content-area {
+                flex-direction: column; /* Stack author image and book details */
+                gap: 30px;
+            }
+
+            .author-image-container,
+            .book-details {
+                flex-basis: 100%; /* Take full width when stacked */
+                max-width: 400px; /* Adjust max width for mobile */
+            }
+        }
+
+         @media (max-width: 480px) {
+             .book-title-main {
+                 font-size: 1.8em;
+             }
+             .author-title-main {
+                 font-size: 1.1em;
+             }
+              .author-name {
+                 font-size: 1.2em;
+              }
+         }
+
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="author-name">Favour Gam</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li> <li><a href="#">About</a></li>
+                    <li><a href="#">Book</a></li>
+                    <li><a href="#">Media</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="book-title-main">TO THE BEAUTIFUL YOU</h1>
+                <h2 class="author-title-main">FAVOUR GAM</h2>
+            </div>
+        </section>
+
+        <section class="content-area container">
+            <div class="author-image-container">
+                <img src="placeholder-author.jpg" alt="Favour Gam">
+                </div>
+
+            <div class="book-details">
+                <div class="book-cover">
+                     <img src="placeholder-book-cover.jpg" alt="To The Beautiful You Book Cover">
+                    </div>
+
+                <div class="purchase-links">
+                    <h3>Preorder Now</h3>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Amazon</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Barnes & Noble</a></li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        </main>
+
+    <footer class="main-footer">
+         <div class="container">
+             <p>&copy; <script>document.write(new Date().getFullYear())</script> Favour Gam. All Rights Reserved.</p>
+             </div>
+     </footer>
+
+     <script>
+         // Basic Mobile Menu Toggle Example (if you uncomment the HTML/CSS)
+         /*
+         const menuToggle = document.querySelector('.menu-toggle');
+         const mainNav = document.querySelector('.main-nav');
+
+         if (menuToggle && mainNav) {
+             menuToggle.addEventListener('click', () => {
+                 mainNav.classList.toggle('active');
+             });
+         }
+         */
+         console.log("Favour Gam front page loaded.");
+     </script>
+
+</body>
+</html>
