@@ -22,13 +22,16 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle">
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
                 <span class="menu-icon"></span>
             </button>
         </div>
     </header>
 
     <div class="mobile-menu">
+        <button class="menu-close" aria-label="Close navigation menu">
+            <span class="close-icon"></span>
+        </button>
         <nav class="mobile-nav">
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -48,7 +51,7 @@
                 <h2 class="author-title-main">FAVOUR GAM</h2>
             </div>
             <div class="hero-image">
-                <img src="images/favour-stairs-1.jpg" alt="">
+              
             </div>
         </section>
 
@@ -109,9 +112,8 @@
                 <h2 class="section-title">Media & Press</h2>
                 <div class="media-grid">
                     <div class="media-gallery">
-                        <img src="images/photos/ja7_9545(1).jpeg" alt="Favour Gam at official event">
+                        <img src="images/photos/ja7_9545.jpeg" alt="Favour Gam at official event">
                         <img src="images/photos/ja7_9559.jpeg" alt="Favour Gam meeting officials">
-                        <img src="images/photos/ja7_9545.jpeg" alt="Favour Gam networking">
                     </div>
                     <div class="media-content">
                         <div class="media-card">
@@ -183,14 +185,18 @@
 
         // Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
+        const menuClose = document.querySelector('.menu-close');
         const mobileMenu = document.querySelector('.mobile-menu');
         const body = document.body;
 
-        menuToggle.addEventListener('click', () => {
+        function toggleMenu() {
             menuToggle.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
-        });
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', toggleMenu);
 
         // Close mobile menu when clicking a link
         document.querySelectorAll('.mobile-nav a').forEach(link => {
